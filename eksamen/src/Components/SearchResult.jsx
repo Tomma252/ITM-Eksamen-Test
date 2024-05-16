@@ -7,7 +7,7 @@ const SearchResult = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get('https://pokeapi.co/api/v2/pokemon/{id or name}/${search.toLowerCase()}');
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`);
             setResults([response.data]);
         } catch (error) {
             console.error("Pokémon not found");
