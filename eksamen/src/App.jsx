@@ -12,9 +12,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/teams" element={<Teams />}></Route>
-        <Route path="/type" element={<Type />}></Route>
+        <Route path="/type/:slug" element={<Type />}></Route>
         <Route path="/search" element={<SearchResult />}></Route>
-        <Route path="/pokemon/:name" element={<Pokemon />}></Route>
+        <Route path="/pokemon/:slug" element={<Pokemon />}></Route>
       </Routes>
     </Router>
   );

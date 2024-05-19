@@ -60,7 +60,9 @@ const Home = () => {
                     <h3>TYPES</h3>
                     <ul>
                         {pokemonTypes.map((type, index) => (
-                            <li key={index}>{type.name}</li>
+                            <li key={index}>
+                                <Link to={`/type/${type.name}`}>{type.name}</Link>
+                            </li>
                         ))}
                     </ul>
                 </span>
