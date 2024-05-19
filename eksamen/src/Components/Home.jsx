@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import SearchResult from './SearchResult';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -44,10 +45,11 @@ const Home = () => {
         <div>
             <nav>
                 <ul>
-                    <li><Link to="/teams"></Link></li>
-                    <li><Link to="/type"></Link></li>
-                    <li><Link to="/search"></Link></li>
+                    <li><Link to="/teams">Teams</Link></li>
+                    <li><Link to="/type">Types</Link></li>
+                    <li><Link to="/search">Search</Link></li>
                 </ul>
+                <SearchResult></SearchResult>
             </nav>
             <div>
                 <h2>MAIN POKÉMONS</h2>
