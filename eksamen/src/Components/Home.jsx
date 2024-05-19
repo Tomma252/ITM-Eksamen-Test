@@ -38,6 +38,8 @@ const Home = () => {
         fetchPokemonTypes();
     }, []);
 
+    const filteredTypes = pokemonTypes.filter(type => type.name !== "stellar" && type.name !== "unknown");
+
     return (
         <div>
             <nav>
@@ -59,7 +61,7 @@ const Home = () => {
                 <span>
                     <h3>TYPES</h3>
                     <ul>
-                        {pokemonTypes.map((type, index) => (
+                        {filteredTypes && filteredTypes.map((type, index) => (
                             <li key={index}>
                                 <Link to={`/type/${type.name}`}>{type.name}</Link>
                             </li>
