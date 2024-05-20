@@ -23,10 +23,19 @@ const SearchResult = () => {
             const response = await axios.get(abilityUrl);
             const effectEntries = response.data.effect_entries;
             const englishEntry = effectEntries.find(entry => entry.language.name === 'en');
-            return englishEntry ? englishEntry.effect : 'No description available.';
+            return englishEntry ? { 
+                effect: englishEntry.effect, 
+                shortEffect: englishEntry.short_effect 
+            } : { 
+                effect: 'No description available.', 
+                shortEffect: 'No short description available.' 
+            };
         } catch (error) {
             console.error('Error fetching ability description.', error);
-            return 'No description available.';
+            return {
+                effect: 'No description available.',
+                shortEffect: 'No short description available.'
+            };
         }
     };
 
@@ -41,10 +50,13 @@ const SearchResult = () => {
             const fetchDescriptions = async () => {
                 const abilities = results[0].abilities;
                 const descriptions = await Promise.all(
-                    abilities.map(async (ability) => ({
-                        name: ability.ability.name,
-                        description: await fetchAbilityDescription(ability.ability.url)
-                    }))
+                    abilities.map(async (ability) => {
+                        const description = await fetchAbilityDescription(ability.ability.url);
+                        return {
+                            name: ability.ability.name,
+                            ...description
+                        };
+                    })
                 );
                 setResults([{ ...results[0], abilities: descriptions }]);
             };
@@ -79,7 +91,8 @@ const SearchResult = () => {
                     {pokemon.abilities.map((ability, index) => (
                         <section key={index}>
                             <h4>{ability.name}</h4>
-                            <p>{ability.description}</p>
+                            <p>Effect: {ability.effect}</p>
+                            <p>Short effect: {ability.shortEffect}</p>
                         </section>
                     ))}
                     <h3>STATS</h3>
