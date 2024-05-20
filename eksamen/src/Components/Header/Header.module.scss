@@ -1,0 +1,80 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.leftContainer {
+    display: flex;
+    align-items: center;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.logo {
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.teamsLink {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.searchBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    width: 100%;
+}
+
+.searchBar input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 40px);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.searchBar button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.searchBar button svg {
+    width: 20px;
+    height: 20px;
+    color: #000000b7;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rightContainer {
+        margin-top: 10px;
+    }
+
+    .searchBar input[type="text"] {
+        width: 100%;
+    }
+}

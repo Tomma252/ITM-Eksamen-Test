@@ -44,11 +44,6 @@ const Home = () => {
     return (
         <div>
             <nav>
-                <ul>
-                    <li><Link to="/teams">Teams</Link></li>
-                    <li><Link to="/type">Types</Link></li>
-                    <li><Link to="/search">Search</Link></li>
-                </ul>
                 <SearchResult></SearchResult>
             </nav>
             <div>
