@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchResult from '../Pokemon';
+import styles from './Home.module.scss';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -42,24 +43,24 @@ const Home = () => {
     const filteredTypes = pokemonTypes.filter(type => type.name !== "stellar" && type.name !== "unknown");
 
     return (
-        <div>
-            <nav>
-                <SearchResult></SearchResult>
+        <div className={styles.container}>
+            <nav className={styles.nav}>
+                <SearchResult />
             </nav>
-            <div>
+            <div className={styles.mainContent}>
                 <h1>MAIN POKÉMONS</h1>
-                <div>
+                <div className={styles.pokemonGrid}>
                     {pokemonList.map((pokemon, index) => (
-                        <span key={index}>
+                        <div key={index} className={styles.pokemonCard}>
                             <p>{pokemon.name}</p>
-                        </span>
+                        </div>
                     ))}
                 </div>
-                <section>
+                <section className={styles.typeSection}>
                     <h3>TYPES</h3>
-                    <ul>
+                    <ul className={styles.typeList}>
                         {filteredTypes && filteredTypes.map((type, index) => (
-                            <li key={index}>
+                            <li key={index} className={styles.typeItem}>
                                 <Link to={`/type/${type.name}`}>{type.name}</Link>
                             </li>
                         ))}
@@ -67,7 +68,7 @@ const Home = () => {
                 </section>
             </div>
         </div>
-    )
+    );
 };
 
 export default Home;
