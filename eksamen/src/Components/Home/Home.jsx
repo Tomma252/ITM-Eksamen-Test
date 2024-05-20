@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchResult from './Pokemon';
+import SearchResult from '../Pokemon';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -47,7 +47,7 @@ const Home = () => {
                 <SearchResult></SearchResult>
             </nav>
             <div>
-                <h2>MAIN POKÉMONS</h2>
+                <h1>MAIN POKÉMONS</h1>
                 <div>
                     {pokemonList.map((pokemon, index) => (
                         <span key={index}>
@@ -55,7 +55,7 @@ const Home = () => {
                         </span>
                     ))}
                 </div>
-                <span>
+                <section>
                     <h3>TYPES</h3>
                     <ul>
                         {filteredTypes && filteredTypes.map((type, index) => (
@@ -64,7 +64,7 @@ const Home = () => {
                             </li>
                         ))}
                     </ul>
-                </span>
+                </section>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
-import Home from './Components/Home';
+import Home from './Components/Home/Home';
 import Teams from './Components/Teams';
 import Type from './Components/Type';
 import SearchResult from './Components/Pokemon';
