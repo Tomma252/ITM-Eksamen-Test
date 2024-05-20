@@ -23,18 +23,18 @@ const SearchResult = () => {
             const response = await axios.get(abilityUrl);
             const effectEntries = response.data.effect_entries;
             const englishEntry = effectEntries.find(entry => entry.language.name === 'en');
-            return englishEntry ? { 
-                effect: englishEntry.effect, 
-                shortEffect: englishEntry.short_effect 
-            } : { 
-                effect: 'No description available.', 
-                shortEffect: 'No short description available.' 
+            return englishEntry ? {
+                effect: englishEntry.effect,
+                short_effect: englishEntry.short_effect
+            } : {
+                effect: 'No description available.',
+                short_effect: 'No description available.'
             };
         } catch (error) {
             console.error('Error fetching ability description.', error);
             return {
                 effect: 'No description available.',
-                shortEffect: 'No short description available.'
+                short_effect: 'No description available.'
             };
         }
     };
@@ -50,13 +50,10 @@ const SearchResult = () => {
             const fetchDescriptions = async () => {
                 const abilities = results[0].abilities;
                 const descriptions = await Promise.all(
-                    abilities.map(async (ability) => {
-                        const description = await fetchAbilityDescription(ability.ability.url);
-                        return {
-                            name: ability.ability.name,
-                            ...description
-                        };
-                    })
+                    abilities.map(async (ability) => ({
+                        name: ability.ability.name,
+                        description: await fetchAbilityDescription(ability.ability.url)
+                    }))
                 );
                 setResults([{ ...results[0], abilities: descriptions }]);
             };
@@ -91,10 +88,18 @@ const SearchResult = () => {
                     {pokemon.abilities.map((ability, index) => (
                         <section key={index}>
                             <h4>{ability.name}</h4>
-                            <p>Effect: {ability.effect}</p>
-                            <p>Short effect: {ability.shortEffect}</p>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Effect: {ability.description ? ability.description.effect : 'No description available.'}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Short Effect: {ability.description ? ability.description.short_effect : 'No description available.'}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </section>
-                    ))}
+                        ))}
                     <h3>STATS</h3>
                     <ul>
                         {pokemon.stats.map((stat, index) => (
