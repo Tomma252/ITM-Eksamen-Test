@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const SearchResult = () => {
-    const [search, setSearch] = useState('');
     const [results, setResults] = useState([]);
     const [error, setError] = useState('');
+    const location = useLocation();
 
-    const fetchPokemon = async () => {
+    const fetchPokemon = async (search) => {
         try {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`);
             setResults([response.data]);
@@ -39,11 +40,13 @@ const SearchResult = () => {
         }
     };
 
-    const handleSearch = async () => {
-        if (search.trim() !== '') {
-            await fetchPokemon();
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const query = params.get('query') || '';
+        if (query.trim() !== '') {
+            fetchPokemon(query);
         }
-    };
+    }, [location]);
 
     useEffect(() => {
         if (results.length > 0 && results[0].abilities && !results[0].abilities[0].description) {
@@ -63,14 +66,6 @@ const SearchResult = () => {
 
     return (
         <article>
-            <h2>Search for a Pokémon</h2>
-            <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            />
-            <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
             {results.length > 0 && results.map((pokemon, index) => (
                 <div key={index}>

@@ -1,6 +1,5 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Pokemon = () => {
@@ -11,11 +10,11 @@ const Pokemon = () => {
     useEffect(() => {
         const fetchPokemon = async () => {
             try {
-                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}/`);
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}/`);
                 setPokemon(response.data);
                 setError('');
             } catch (error) {
-                console.error("Error fetching Pokémon data");
+                console.error("Error fetching Pokémon data", error);
                 setPokemon(null);
                 setError('Pokémon not found');
             }
@@ -28,9 +27,10 @@ const Pokemon = () => {
             {pokemon ? (
                 <span>
                     <h2>{pokemon.name}</h2>
+                    {/* Display other Pokémon details here */}
                 </span>
             ) : (
-                <p>Loading...</p>
+                <p>{error || 'Loading...'}</p>
             )}
         </article>
     );
