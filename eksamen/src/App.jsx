@@ -4,8 +4,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Teams from './Components/Teams';
 import Type from './Components/Type';
-import SearchResult from './Components/SearchResult';
-import Pokemon from './Components/Pokemon';
+import SearchResult from './Components/Pokemon';
 
 const App = () => {
   return (
@@ -16,7 +15,6 @@ const App = () => {
         <Route path="/teams" element={<Teams />}></Route>
         <Route path="/type/:slug" element={<Type />}></Route>
         <Route path="/search" element={<SearchResult />}></Route>
-        <Route path="/pokemon/:slug" element={<Pokemon />}></Route>
       </Routes>
     </Router>
   );

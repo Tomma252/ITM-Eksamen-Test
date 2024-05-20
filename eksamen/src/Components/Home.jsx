@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchResult from './SearchResult';
+import SearchResult from './Pokemon';
 
 const Home = () => {
     const [pokemonList, setPokemonList] = useState([]);
