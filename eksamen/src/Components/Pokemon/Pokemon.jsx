@@ -70,10 +70,10 @@ const SearchResult = () => {
             {error && <p>{error}</p>}
             {results.length > 0 && results.map((pokemon, index) => (
                 <div className={styles.pokemon} key={index}>
-                    <h3 className={styles.pokemon__name}>{pokemon.name.toUpperCase()}</h3>
+                    <h2 className={styles.pokemon__name}>{pokemon.name.toUpperCase()}</h2>
                     <img className={styles.pokemon__image} src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
                     <div className={styles.pokemon__details}>
-                        <h3>TYPE(S)</h3>
+                        <h2>TYPE(S)</h2>
                         <p className={styles.pokemon__types}>
                             {pokemon.types.map((type, index) => (
                                 <span key={index}>
@@ -81,7 +81,7 @@ const SearchResult = () => {
                                 </span>
                             ))}
                         </p>
-                        <h3>STATS</h3>
+                        <h2>STATS</h2>
                         <ul className={styles.pokemon__stats}>
                             {pokemon.stats.map((stat, index) => (
                                 <li key={index}>
@@ -91,7 +91,7 @@ const SearchResult = () => {
                         </ul>
                     </div>
                     <div className={styles.pokemon__abilities}>
-                        <h3>ABILITIES</h3>
+                        <h2>ABILITIES</h2>
                         {pokemon.abilities.map((ability, index) => (
                             <section key={index}>
                                 <h4 className={styles['pokemon__abilities-name']}>{ability.name}</h4>
