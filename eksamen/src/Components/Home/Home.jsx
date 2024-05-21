@@ -48,7 +48,7 @@ const Home = () => {
                 <section className={styles.pokemonGrid}>
                     {pokemonList.map((pokemon, index) => (
                         <div key={index} className={styles.pokemonCard}>
-                            <Link to={`/search?query=${pokemon.name}`} className={styles.link}>
+                            <Link to={`/search?query=${pokemon.name}`}>
                                 <p>{pokemon.name}</p>
                             </Link>
                         </div>
