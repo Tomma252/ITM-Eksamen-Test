@@ -4,7 +4,7 @@ import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Teams from './Components/Teams';
 import Type from './Components/Type/Type';
-import SearchResult from './Components/Pokemon';
+import SearchResult from './Components/Pokemon/Pokemon';
 
 const App = () => {
   return (
