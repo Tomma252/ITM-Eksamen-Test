@@ -1,0 +1,23 @@
+@import '../Home/Home.module.scss';
+
+.typeList {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.container {
+    @extend .container;
+}
+
+.typeCard {
+    @extend .pokemonCard;
+}
+
+@media (max-width: 600px) {
+    .typeList {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}

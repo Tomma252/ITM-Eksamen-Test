@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import Teams from './Components/Teams';
-import Type from './Components/Type';
+import Type from './Components/Type/Type';
 import SearchResult from './Components/Pokemon';
 
 const App = () => {

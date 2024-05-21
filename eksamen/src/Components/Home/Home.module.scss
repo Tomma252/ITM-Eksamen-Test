@@ -4,6 +4,7 @@
     padding: 20px;
     overflow-y: auto;
     height: calc(100vh - 50px);
+    width: 100%;
 }
 
 .mainContent,
@@ -13,14 +14,7 @@
 
 .pokemonGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.typeList {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
 }
@@ -44,11 +38,11 @@
 }
 
 .typeList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     list-style: none;
-    padding: 0;
+    gap: 20px;
+    padding: 20px;
 }
 
 .typeItem {
@@ -63,9 +57,5 @@
     .pokemonCard,
     .typeCard {
         padding: 5px;
-    }
-
-    .nav {
-        flex-direction: column;
     }
 }

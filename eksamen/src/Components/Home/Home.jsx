@@ -45,13 +45,15 @@ const Home = () => {
         <div className={styles.container}>
             <div className={styles.mainContent}>
                 <h1>MAIN POKÉMONS</h1>
-                <div className={styles.pokemonGrid}>
+                <section className={styles.pokemonGrid}>
                     {pokemonList.map((pokemon, index) => (
                         <div key={index} className={styles.pokemonCard}>
-                            <p>{pokemon.name}</p>
+                            <Link to={`/search?query=${pokemon.name}`} className={styles.link}>
+                                <p>{pokemon.name}</p>
+                            </Link>
                         </div>
                     ))}
-                </div>
+                </section>
                 <section className={styles.typeSection}>
                     <h3>TYPES</h3>
                     <ul className={styles.typeList}>
