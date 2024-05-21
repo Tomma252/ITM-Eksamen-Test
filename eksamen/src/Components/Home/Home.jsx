@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchResult from '../Pokemon';
 import styles from './Home.module.scss';
 
 const Home = () => {
@@ -44,9 +43,6 @@ const Home = () => {
 
     return (
         <div className={styles.container}>
-            <nav className={styles.nav}>
-                <SearchResult />
-            </nav>
             <div className={styles.mainContent}>
                 <h1>MAIN POKÉMONS</h1>
                 <div className={styles.pokemonGrid}>
@@ -60,7 +56,7 @@ const Home = () => {
                     <h3>TYPES</h3>
                     <ul className={styles.typeList}>
                         {filteredTypes && filteredTypes.map((type, index) => (
-                            <li key={index} className={styles.typeItem}>
+                            <li key={index} className={`${styles.typeItem} ${styles.typeCard}`}>
                                 <Link to={`/type/${type.name}`}>{type.name}</Link>
                             </li>
                         ))}
