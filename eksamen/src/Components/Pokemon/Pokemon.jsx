@@ -70,40 +70,44 @@ const SearchResult = () => {
             {error && <p>{error}</p>}
             {results.length > 0 && results.map((pokemon, index) => (
                 <div className={styles.pokemon} key={index}>
-                    <h3 className={styles['pokemon__name']}>{pokemon.name.toUpperCase()}</h3>
-                    <img className={styles['pokemon__image']} src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
-                    <h3 className={styles['pokemon__types']}>TYPE(S)</h3>
-                    <p className={styles['pokemon__types']}>
-                        {pokemon.types.map((type, index) => (
-                            <span key={index}>
-                                {type.type.name}{index < pokemon.types.length - 1 ? ', ' : ''}
-                            </span>
+                    <h3 className={styles.pokemon__name}>{pokemon.name.toUpperCase()}</h3>
+                    <img className={styles.pokemon__image} src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+                    <div className={styles.pokemon__details}>
+                        <h3>TYPE(S)</h3>
+                        <p className={styles.pokemon__types}>
+                            {pokemon.types.map((type, index) => (
+                                <span key={index}>
+                                    {type.type.name}{index < pokemon.types.length - 1 ? ', ' : ''}
+                                </span>
+                            ))}
+                        </p>
+                        <h3>STATS</h3>
+                        <ul className={styles.pokemon__stats}>
+                            {pokemon.stats.map((stat, index) => (
+                                <li key={index}>
+                                    {stat.stat.name}: {stat.base_stat}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className={styles.pokemon__abilities}>
+                        <h3>ABILITIES</h3>
+                        {pokemon.abilities.map((ability, index) => (
+                            <section key={index}>
+                                <h4 className={styles['pokemon__abilities-name']}>{ability.name}</h4>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td className={styles['pokemon__abilities-description']}>Effect: {ability.description ? ability.description.effect : 'No description available.'}</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['pokemon__abilities-description']}>Short Effect: {ability.description ? ability.description.short_effect : 'No description available.'}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
                         ))}
-                    </p>
-                    <h3 className={styles['pokemon__abilities']}>ABILITIES</h3>
-                    {pokemon.abilities.map((ability, index) => (
-                        <section className={styles['pokemon__abilities']} key={index}>
-                            <h4 className={styles['pokemon__abilities-name']}>{ability.name}</h4>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td className={styles['pokemon__abilities-description']}>Effect: {ability.description ? ability.description.effect : 'No description available.'}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className={styles['pokemon__abilities-description']}>Short Effect: {ability.description ? ability.description.short_effect : 'No description available.'}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                        ))}
-                    <h3 className={styles['pokemon__stats']}>STATS</h3>
-                    <ul className={styles['pokemon__stats']}>
-                        {pokemon.stats.map((stat, index) => (
-                            <li key={index}>
-                                {stat.stat.name}: {stat.base_stat}
-                            </li>
-                        ))}
-                    </ul>
+                    </div>
                 </div>
             ))}
         </article>
